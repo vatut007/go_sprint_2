@@ -1,0 +1,26 @@
+package main
+
+import (
+	"flag"
+	"fmt"
+)
+
+type NetAddress struct {
+	Host string
+	Port int
+}
+
+// допишите код реализации методов интерфейса
+// ...
+
+func main() {
+	addr := new(NetAddress)
+	// если интерфейс не реализован,
+	// здесь будет ошибка компиляции
+	_ = flag.Value(addr)
+	// проверка реализации
+	flag.Var(addr, "addr", "Net address host:port")
+	flag.Parse()
+	fmt.Println(addr.Host)
+	fmt.Println(addr.Port)
+}
