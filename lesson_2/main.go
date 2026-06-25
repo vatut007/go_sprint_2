@@ -1,17 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"log"
-	"time"
 
 	"github.com/caarlos0/env/v6"
 )
 
 type Config struct {
-	Files []string `env:"FILES" envSeparator:":"`
-	Home  string   `env:"HOME"`
-	// required требует, чтобы переменная TASK_DURATION была определена
-	TaskDuration time.Duration `env:"TASK_DURATION,required"`
+	User string `env:"USER"`
 }
 
 func main() {
@@ -21,5 +18,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println(cfg)
+	fmt.Printf("Current user is %s\n", cfg.User)
 }
